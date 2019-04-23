@@ -14,7 +14,7 @@ from matplotlib.pyplot import specgram
 from sklearn.metrics import confusion_matrix
 from sklearn.linear_model.logistic import LogisticRegression
 from sklearn.model_selection import train_test_split
-from fft_utils import read_fft, plot_confusion_matrix
+from fft_utils import read_fft,read_mfcc, plot_confusion_matrix
 
 GENRE_LIST = ["classical", "jazz", "country", "pop", "rock", "metal"]
 
@@ -25,10 +25,11 @@ GENRE_LIST = ["classical", "jazz", "country", "pop", "rock", "metal"]
 #fft_features = abs(scipy.fft(X))
 #print(fft_features.shape)
 
-X, y = read_fft(GENRE_LIST)
+#X, y = read_fft(GENRE_LIST)
+X, y = read_mfcc(GENRE_LIST)
 clf = LogisticRegression()
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=10)
 clf.fit(X_train, y_train)
 
 y_pred = clf.predict(X_test)
