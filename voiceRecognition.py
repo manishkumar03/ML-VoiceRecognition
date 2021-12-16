@@ -18,13 +18,6 @@ from fft_utils import read_fft,read_mfcc, plot_confusion_matrix
 
 GENRE_LIST = ["classical", "jazz", "country", "pop", "rock", "metal"]
 
-#sample_rate, X = wavfile.read('./genres/rock/rock.00025.wav')
-#print(sample_rate, X.shape)
-#specgram(X, Fs=sample_rate, xextent=(0,30))
-#
-#fft_features = abs(scipy.fft(X))
-#print(fft_features.shape)
-
 #X, y = read_fft(GENRE_LIST)
 X, y = read_mfcc(GENRE_LIST)
 clf = LogisticRegression()
